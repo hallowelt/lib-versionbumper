@@ -1,0 +1,43 @@
+{
+	"name": "hallowelt/lib-versionbumper",
+	"description": "Simple utility classes to modiy SemVer compliant version numbers",
+	"type": "library",
+	"require-dev": {
+		"mediawiki/mediawiki-codesniffer": "31.0.0",
+		"mediawiki/mediawiki-phan-config": "0.11.0",
+		"mediawiki/minus-x": "1.1.1",
+		"jakub-onderka/php-parallel-lint": "1.0.0",
+		"jakub-onderka/php-console-highlighter": "0.4.0",
+		"phpunit/phpunit": "^9.5"
+	},
+	"license": "MIT",
+	"autoload": {
+		"psr-4": {
+			"HalloWelt\\Lib\\VersionBumper\\": "src/",
+			"HalloWelt\\Lib\\VersionBumper\\Tests\\": "tests/phpunit/"
+		}
+	},
+	"authors": [
+		{
+			"name": "Robert Vogel",
+			"email": "vogel@hallowelt.com"
+		}
+	],
+	"scripts": {
+		"unittest": [
+			"vendor/phpunit/phpunit/phpunit --configuration phpunit.xml"
+		],
+		"test": [
+			"parallel-lint . --exclude vendor --exclude node_modules",
+			"minus-x check .",
+			"phpcs -sp"
+		],
+		"fix": [
+			"minus-x fix .",
+			"phpcbf"
+		],
+		"lint": [
+			"phan --no-progress-bar -m text | sed 's, ,:,'"
+		]
+	}
+}
