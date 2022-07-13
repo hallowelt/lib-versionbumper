@@ -129,4 +129,17 @@ class VersionBumperTest extends TestCase {
 		];
 	}
 
+	/**
+	 * @return void
+	 * @covers HalloWelt\Lib\VersionBumper\VersionBumper::setMETADATA
+	 */
+	public function testREADMEMDExample() {
+		$bumper = new VersionBumper();
+		$this->assertEquals( "2.0.0", $bumper->bumpMAJOR( '1.1.6' ) );
+		$this->assertEquals( "1.2.0",  $bumper->bumpMINOR( '1.1.6' ) );
+		$this->assertEquals( "1.1.7", $bumper->bumpPATCH( '1.1.6' ) );
+		$this->assertEquals( "1.1.6-rc.1", $bumper->bumpPRERELEASE( '1.1.6', 'rc' ) );
+		$this->assertEquals( "1.1.6-beta.1+WEEK27", $bumper->setMETADATA( '1.1.6-beta', 'WEEK27' ) );
+	}
+
 }
