@@ -47,7 +47,9 @@ class VersionBumper {
 	 */
 	public function bumpPATCH( $version ) : string {
 		$this->parseVersion( $version );
-		$this->patch++;
+		if ( $this->prereleasetype === '' ) {
+			$this->patch++;
+		}
 		$this->clearPrerelease();
 		$this->clearMeta();
 

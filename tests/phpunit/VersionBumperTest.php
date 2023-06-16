@@ -97,10 +97,12 @@ class VersionBumperTest extends TestCase {
 	public function provideTestBumpPATCHData() {
 		return [
 			[ '0.0.1', '0.0.2' ],
-			[ '0.0.1-beta', '0.0.2' ],
-			[ '1.0.1-beta', '1.0.2' ],
-			[ '0.1.1-beta.5', '0.1.2' ],
-			[ '0.0.1-beta+ABC', '0.0.2' ]
+			[ '1.0.1', '1.0.2' ],
+			[ '1.1.1', '1.1.2' ],
+			[ '0.0.1-beta', '0.0.1' ],
+			[ '1.0.1-beta', '1.0.1' ],
+			[ '0.1.1-beta.5', '0.1.1' ],
+			[ '0.0.1-beta+ABC', '0.0.1' ]
 		];
 	}
 
